@@ -62,7 +62,7 @@
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	public @interface MyAnn {
-	 	String name() default "";	// 定义一个方法不用写
+	 	String name() default "[^a-z]";	// 定义一个方法不用写,不能写a到z字母小写的
 	}
 	
 	2、entity package
