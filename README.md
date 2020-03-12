@@ -142,7 +142,7 @@
         // 获取邮件对象
         Message message = new MimeMessage(session);
         // 设置发件人邮箱地址
-        message.setFrom(new InternetAddress("service@tech.houtang.net"));
+        message.setFrom(new InternetAddress("邮箱"));
         // 设置收件人邮箱地址
         message.setRecipient(Message.RecipientType.TO, new InternetAddress("1605513752@qq.com"));//一个收件人
         // 设置邮件标题
@@ -152,7 +152,7 @@
         // 得到邮差对象
         Transport transport = session.getTransport();
         // 连接自己的邮箱账户
-        transport.connect("service@tech.houtang.net", "LagjVqEPcWmvQF9c");// 密码为QQ邮箱开通的stmp服务后得到的客户端授权码
+        transport.connect("邮箱", "授权码");// 密码为QQ邮箱开通的stmp服务后得到的客户端授权码
         // 发送邮件
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
