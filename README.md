@@ -125,4 +125,35 @@
 	@Deprecated			// 注明该方法已过时，不建议使用
 	@@verride			// 表明覆盖父类的方法
 	@SupperssWarnings	// 去掉检测警告
-	@Constraint			// 验证器的实现类		
+	@Constraint			// 验证器的实现类	
+
+
+``` java
+
+ Properties prop = new Properties();
+        prop.put("mail.transport.protocol", "smtp");// 连接协议
+        prop.put("mail.smtp.host", "smtp.exmail.qq.com");// 主机名
+        prop.put("mail.smtp.port", 465);// 端口号
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.ssl.enable", "true");// 设置是否使用ssl安全连接 ---一般都使用
+        prop.put("mail.debug", "true");// 设置是否显示debug信息 true 会在控制台显示相关信息
+        // 得到会话对象
+        Session session = Session.getInstance(prop);
+        // 获取邮件对象
+        Message message = new MimeMessage(session);
+        // 设置发件人邮箱地址
+        message.setFrom(new InternetAddress("service@tech.houtang.net"));
+        // 设置收件人邮箱地址
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress("1605513752@qq.com"));//一个收件人
+        // 设置邮件标题
+        message.setSubject("重要文件");
+        // 设置邮件内容
+        message.setText("Activiti5是由Alfresco软件在2010年5月17日发布的业务流程管理（BPM）框架，它是覆盖了业务流程管理、工作流、服务协作等领域的一个开源的、灵活的、易扩展的可执行流程语言框架。Activiti基于Apache许可的开源BPM平台，创始人Tom Baeyens是JBoss jBPM的项目架构师，它特色是提供了idea插件，开发人员可以通过插件直接绘画出业务");
+        // 得到邮差对象
+        Transport transport = session.getTransport();
+        // 连接自己的邮箱账户
+        transport.connect("service@tech.houtang.net", "LagjVqEPcWmvQF9c");// 密码为QQ邮箱开通的stmp服务后得到的客户端授权码
+        // 发送邮件
+        transport.sendMessage(message, message.getAllRecipients());
+        transport.close();
+```	
